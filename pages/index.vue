@@ -152,6 +152,7 @@ import VueNumeric from 'vue-numeric'
 export default {
   data() {
     return {
+      // Setando os valores iniciais
       billTotal: '',
       tipPercentage: 10,
       numberOfPeople: 2,
@@ -191,6 +192,7 @@ export default {
 
 
   methods: {
+    // Metodo que realiza o calculo com base na moeda escolhida
     initCalc() {
       this.$axios.get(`latest?apikey=YhJUQJgs2zKo9pU6LWAvjoUPFRkj80MzVJyd4QsW&currencies=BRL&base_currency=${this.currency}`,
       )
@@ -209,18 +211,19 @@ export default {
           }
         });
     },
-
+    // Metodo que espera o clique do botão para ir ao próximo passo
     changeBlock() {
       document.getElementById('left-block').style.display = 'none';
       document.getElementById('right-block').style.display = 'flex';
     },
-
+  // Metodo que espera o clique do botão para voltar a página inicial
     mainBlock() {
       document.getElementById('left-block').style.display = 'flex';
       document.getElementById('right-block').style.display = 'none';
       this.billTotal = '';
     },
 
+  // Verifica se a navegação é mobile
     isMobile() {
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true
@@ -228,7 +231,8 @@ export default {
         return false
       }
     },
-
+  
+  // Chama função que formata os valores (utils/formatNumber.js)
     formatPrice,
   },
 
